@@ -831,12 +831,16 @@ body::after{
 .footer-link:hover{border-color:rgba(10,185,160,0.3);color:var(--accent-lt);background:rgba(10,185,160,0.06);}
 .footer-email{
   position:relative;
-  width:auto;height:38px;padding:0 16px 0 12px;gap:9px;
-  font-family:monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;
   cursor:pointer;-webkit-user-select:none;user-select:none;
 }
-.footer-email svg{flex-shrink:0;}
 .footer-email.copied{color:var(--accent-lt);border-color:rgba(10,185,160,0.3);}
+.footer-email-tip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);
+  padding:5px 10px;border-radius:8px;background:rgba(10,185,160,0.14);border:.5px solid rgba(10,185,160,0.3);
+  color:var(--accent-lt);font-size:11px;font-weight:600;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+}
+.footer-email.copied .footer-email-tip{opacity:1;transform:translateX(-50%) translateY(0);}
 .footer-bottom{
   position:relative;
   margin-top:80px;padding-top:24px;border-top:.5px solid var(--b0);
@@ -2523,7 +2527,7 @@ body::after{
       </a>
       <span class="footer-link footer-email" id="footerEmail" role="button" tabindex="0" aria-label="Copiar email" data-email="portasdulcemaria@gmail.com">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
-        <span id="footerEmailText">portasdulcemaria@gmail.com</span>
+        <span class="footer-email-tip">&iexcl;Copiado!</span>
       </span>
     </div>
   </div>
@@ -2535,17 +2539,14 @@ body::after{
 <script>
 (function(){
   var em = document.getElementById('footerEmail');
-  var label = document.getElementById('footerEmailText');
-  if(!em || !label) return;
+  if(!em) return;
   var original = em.getAttribute('data-email');
   var t;
   function copyEmail(){
     function flash(){
-      label.textContent = '\u00a1Copiado!';
       em.classList.add('copied');
       clearTimeout(t);
       t = setTimeout(function(){
-        label.textContent = original;
         em.classList.remove('copied');
       }, 1800);
     }
