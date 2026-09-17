@@ -46,6 +46,9 @@
   --critical:#FF8C42;
   --warning:#FFAD0D;
   --error:#FF4C6B;
+  --sec-py:96px;
+  --sec-py-sm:64px;
+  --sec-px:56px;
   --tc:#4EAEF5;--i131:#F59A2E;--ga:#8E6EFF;
   --lu:#4EF5B9;--f18:#FF6B8A;--tl:#82D9FF;--ra:#FF8C42;
 }
@@ -386,6 +389,16 @@ body::after{
 .ctx-v1-strip-item{padding-left:14px;border-left:.5px solid var(--b1);}
 .ctx-v1-strip-tag{font-family:monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:7px;}
 .ctx-v1-strip-txt{font-size:11.5px;color:var(--ink-faint);line-height:1.6;}
+
+/* === Section spacing scale (standardized) === */
+@media(max-width:800px){
+  .dec-text{margin-top:32px!important;}
+
+  :root{ --sec-py:72px; --sec-px:32px; --sec-py-sm:48px; }
+}
+@media(max-width:480px){
+  :root{ --sec-py:56px; --sec-px:24px; --sec-py-sm:40px; }
+}
 @media(max-width:800px){.ctx-v1-strip-grid{grid-template-columns:1fr 1fr;}}
 .ctx-tl-label{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:9px;text-align:center;line-height:1.5;}
 .ctx-tl-track{display:flex;gap:4px;height:3px;}
@@ -652,7 +665,7 @@ body::after{
 .micro-desc{font-size:13px;color:var(--ink-faint);line-height:1.7;}
 
 /* ─── 9. FIGMA HANDOFF — full width mock ─── */
-.slide-figma{padding:96px 56px;max-width:1060px;margin:0 auto;}
+.slide-figma{padding:var(--sec-py) var(--sec-px);max-width:1060px;margin:0 auto;}
 
 /* ─── 10. TOKENS → CÓDIGO — dos columnas lado a lado ─── */
 .slide-tokens{
@@ -693,7 +706,7 @@ body::after{
 .slide-pivot{
   width:100vw;
   margin-left:calc(-50vw + 50%);
-  padding:160px 56px;
+  padding:calc(var(--sec-py) + 24px) var(--sec-px);
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -1269,7 +1282,8 @@ body::after{
 @media(prefers-reduced-motion:reduce){.dx-root,.dx-trunk,.dx-branch,.dx-fan svg path{transition:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important;}}
 
 /* ─── ROADMAP · TIMELINE HORIZONTAL ─── */
-.rm-section{padding:88px 56px;max-width:1060px;margin:0 auto;position:relative;}
+.rm-section{padding:var(--sec-py) var(--sec-px);max-width:1060px;margin:0 auto;position:relative;}
+.ht-section{padding:var(--sec-py) var(--sec-px);max-width:1060px;margin:0 auto;position:relative;}
 .rm-wrap{position:relative;padding:44px 0 0;}
 .rm-line{position:absolute;top:73px;left:16px;right:16px;height:2px;border-radius:2px;background:var(--b1);transform:scaleX(0);transform-origin:left center;transition:transform 1.15s cubic-bezier(.4,0,.2,1);}
 .rm-line.in-view{transform:scaleX(1);}
@@ -1334,7 +1348,6 @@ body::after{
 
 @media(max-width:800px){
   .dx-branches{grid-template-columns:1fr;}
-  .rm-section{padding:64px 24px;}
   .rm-cols{grid-template-columns:1fr;}
   .rm-line{display:none;}
   .rm-node-row{display:none;}
@@ -1376,7 +1389,7 @@ body::after{
     scroll-snap-align:start;
   }
   .ht-dots{display:flex;}
-  .ht-section{padding:64px 24px!important;}
+  .ht-section{padding:var(--sec-py) var(--sec-px)!important;}
 }
 
 .dec-collage{position:relative;min-height:600px;}
@@ -1586,7 +1599,7 @@ body::after{
 ══════════════════════════════════════ -->
 <div style="padding:20px 0 0;position:relative;">
   <!-- ── Momento 3: La decisión ── -->
-  <div style="max-width:1060px;margin:0 auto;padding:80px 56px 100px;position:relative;">
+  <div style="max-width:1060px;margin:0 auto;padding:var(--sec-py) var(--sec-px);position:relative;">
     <div class="lg" style="position:absolute;width:500px;height:400px;top:20%;left:-140px;background:radial-gradient(circle,rgba(92,92,255,0.06) 0%,transparent 65%);animation:ba 15s ease-in-out infinite;pointer-events:none;border-radius:50%;filter:blur(90px);"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
 
@@ -1635,10 +1648,10 @@ body::after{
 </script>
 
       <!-- Texto la decisión -->
-      <div style="margin-top:-64px;">
+      <div class="dec-text" style="margin-top:-64px;">
         <div class="kicker num c-accent">01 · La decisión</div>
-        <div class="t-h2" style="margin-bottom:20px;">Subí la vara</div>
-        <p style="font-size:14px;color:var(--ink-faint);line-height:1.75;font-weight:300;margin-bottom:24px;">El pedido era simple: una lavada de cara para actualizar el store y sumar iOS. Mi respuesta fue otra — un refactor total, con roadmap de tres horizontes, para escalar una adopción que ya venía creciendo sola.</p>
+        <div class="t-h2 mt16">Subí la vara</div>
+        <p class="t-lead mt16" style="margin-bottom:24px;">El pedido era simple: una lavada de cara para actualizar el store y sumar iOS. Mi respuesta fue otra — un refactor total, con roadmap de tres horizontes, para escalar una adopción que ya venía creciendo sola.</p>
         <div class="dec-ad">
           <div class="dec-ad-card dec-ad-before">
             <div class="dec-ad-label" style="color:var(--critical);">Antes</div>
@@ -1683,15 +1696,15 @@ body::after{
 </div>
 
   <!-- ── Momento 1: El punto de partida ── -->
-  <div style="max-width:1060px;margin:0 auto;padding:0 56px 96px;">
+  <div style="max-width:1060px;margin:0 auto;padding:0 var(--sec-px) var(--sec-py);">
     <div class="ctx-wrap">
 
       <!-- Texto -->
       <div>
         <div class="kicker num c-primary">02 · El contexto</div>
 
-        <h2 class="t-h1" style="margin-bottom:24px;">El punto de partida:<br>funcional, pero sin sistema</h2>
-        <p class="t-lead" style="margin-bottom:20px;">Radiux ya tenía usuarios activos en cinco países cuando llegué. No era un rediseño desde cero — era un producto en uso, con una base real que dependía de él.</p>
+        <h2 class="t-h1 mt16">El punto de partida:<br>funcional, pero sin sistema</h2>
+        <p class="t-lead mt16" style="margin-bottom:20px;">Radiux ya tenía usuarios activos en cinco países cuando llegué. No era un rediseño desde cero — era un producto en uso, con una base real que dependía de él.</p>
         <p class="t-body" style="color:var(--ink-faint);line-height:1.8;">El problema no era la funcionalidad: era la ausencia de sistema. Cada pantalla se había resuelto sola, sin criterio compartido, y eso la dejó atada a una sola plataforma. Sin un design system detrás, no podía crecer en funcionalidades ni expandirse a otro sistema operativo sin repetir el mismo problema desde cero. Ese fue el punto de partida de este trabajo.</p>
         <!-- Ficha técnica -->
         <div class="ctx-fact">
@@ -1930,10 +1943,10 @@ body::after{
 
 <!-- ═══ IA NATIVA — EL HOOK ═══ -->
 <style>.ht-card{transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .35s ease;}.ht-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.3);}</style>
-<div class="ht-section" style="padding:80px 56px;max-width:1060px;margin:0 auto;position:relative;">
+<div class="ht-section" style="max-width:1060px;margin:0 auto;position:relative;">
   <div class="lg" style="position:absolute;width:500px;height:400px;top:-60px;right:-100px;background:radial-gradient(circle,rgba(92,92,255,0.08) 0%,transparent 65%);animation:ba 14s ease-in-out infinite;pointer-events:none;border-radius:50%;filter:blur(80px);"></div>
   <div class="kicker num c-accent">04 · Cómo trabajo</div>
-  <h2 class="t-h1 mt16" style="max-width:760px;margin-top:12px;">No uso IA para ir más rápido<br>La uso para expandir mi scope, con criterio</h2>
+  <h2 class="t-h1 mt16" style="max-width:760px;">No uso IA para ir más rápido<br>La uso para expandir mi scope, con criterio</h2>
   <p class="t-lead mt16" style="max-width:680px;">Diseño y construyo con IA nativa integrada en mi flujo. No la uso como un atajo, sino como una palanca de eficiencia que me permitió cruzar la frontera del diseño y meterme de lleno en el desarrollo de producto.</p>
 
   <div class="ht-row" id="htRow" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;">
@@ -2149,7 +2162,7 @@ body::after{
 <div class="rule"></div>
 
 <!-- ═══ PRUEBA DE CRAFT — TOKEN CARD INTERACTIVA ═══ -->
-<div style="padding:80px 56px;max-width:760px;margin:0 auto;">
+<div style="padding:var(--sec-py) var(--sec-px);max-width:760px;margin:0 auto;">
   <div class="kicker num c-accent">06 · Tokens → código</div>
   <h2 class="t-h2 mt16">Esto no es una captura — es el sistema real</h2>
   <p class="t-body mt16">Tocá cualquier token para ver la línea de código Dart exacta que lo define. Así audito yo también cada widget contra el sistema.</p>
@@ -2203,7 +2216,7 @@ body::after{
 .giro-go-badge-text{font-size:11px;font-weight:600;color:var(--accent-lt);letter-spacing:.01em;}
 @keyframes giroPulse{0%{box-shadow:0 0 0 0 rgba(10,185,160,0.45);}70%{box-shadow:0 0 0 10px rgba(10,185,160,0);}100%{box-shadow:0 0 0 0 rgba(10,185,160,0);}}
 </style>
-<div style="padding:80px 56px;max-width:1060px;margin:0 auto;">
+<div style="padding:var(--sec-py) var(--sec-px);max-width:1060px;margin:0 auto;">
   <div class="giro-grid" id="giroVideoWrap" style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);">
     <div class="giro-media">
     <div class="dec-frame" style="width:100%;max-width:280px;margin:0 auto;">
@@ -2253,7 +2266,7 @@ body::after{
 
 <!-- ═══ PROCESO DE BUILD ═══ -->
 <style>
-.build-wrap{padding:80px 56px;max-width:1060px;margin:0 auto;}
+.build-wrap{padding:var(--sec-py) var(--sec-px);max-width:1060px;margin:0 auto;}
 .build-intro{max-width:760px;}
 .build-lead{max-width:640px;}
 .build-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px;}
